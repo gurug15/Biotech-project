@@ -9,10 +9,6 @@ interface MolStarViewerProps {
   pdbUrl?: string;
 }
 
-
-
-// 
-
 const MolStarViewer = ({ 
   width = 800, 
   height = 600,
@@ -20,16 +16,15 @@ const MolStarViewer = ({
 }: MolStarViewerProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   
-
   useEffect(() => {
     if (!containerRef.current) return;
 
     let plugin: any = null;
     
     const init = async () => {
-      // First create the plugin instance
+      // Use the non-null assertion operator (!) to tell TypeScript that containerRef.current is not null
       plugin = await createPluginUI({
-        target: containerRef.current,
+        target: containerRef.current!, // Add the ! here
         render: renderReact18
       });
       
@@ -46,7 +41,8 @@ const MolStarViewer = ({
         const structure = await plugin.builders.structure.createStructure(model);
         
         // Create a component representation
-        const representation = await plugin.builders.structure.representation.addRepresentation(structure, {
+        // Use void to acknowledge we're not using the return value
+        void await plugin.builders.structure.representation.addRepresentation(structure, {
           type: 'cartoon',
           color: 'chain-id'
         });

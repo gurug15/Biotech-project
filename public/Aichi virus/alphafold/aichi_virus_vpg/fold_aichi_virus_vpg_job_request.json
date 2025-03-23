@@ -1,0 +1,18 @@
+[{
+ "name": "Aichi virus_VPg",
+ "modelSeeds": [
+  "1203783901"
+ ],
+ "sequences": [
+  {
+   "proteinChain": {
+    "sequence": "AAYSAISHQKPKPKSQKPVPTRHIQRQ",
+    "count": 1,
+    "useStructureTemplate": true
+   }
+  }
+ ],
+ "dialect": "alphafoldserver",
+ "version": 1
+}
+]
